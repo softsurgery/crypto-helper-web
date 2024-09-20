@@ -5,7 +5,8 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const axios = _axios.create({
   baseURL: BASE_URL,
   headers: {
-    "x-custom-lang": "en",
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
   },
 });
 
@@ -15,8 +16,6 @@ axios.interceptors.request.use(
 
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
-    } else {
-      window.location.href = "/authentication";
     }
 
     return config;

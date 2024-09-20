@@ -2,18 +2,30 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import AuthenticationPage from "./pages/Authentication";
 import { Layout } from "@/components/layout/Layout";
+import SignOutComponent from "./components/Authentification/SignOutComponent";
+import CoinTable from "./pages/CoinTable";
+import Coins from "./pages/Coins";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
+    element: <Layout />,
+    children: [
+      { path: "/analytics", element: <Coins /> },
+      { path: "/coins", element: <CoinTable /> },
+      {
+        path: "/settings",
+        element: <div>Settings</div>,
+      },
+      {
+        path: "*",
+        element: <div>404</div>,
+      },
+    ],
   },
   {
     path: "/authentication",
@@ -21,15 +33,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/logout",
-    element: <AuthenticationPage />,
-  },
-  {
-    path: "*",
-    element: <div>404</div>,
+    element: <SignOutComponent />,
   },
 ]);
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

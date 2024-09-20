@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuthForm } from "@/hooks/use-auth-form";
 import { cn } from "@/lib/utils";
-import { Spinner } from "./common/Spinner";
+import { Spinner } from "../common/Spinner";
 
 export const description =
   "A sign up form with first name, last name, email and password inside a card. There's an option to sign up with GitHub and a link to login if you already have an account";

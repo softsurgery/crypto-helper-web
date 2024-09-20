@@ -1,5 +1,5 @@
 import React from "react";
-import { Pyramid } from "lucide-react";
+import { ChartBar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MenuItem } from "./StaticMenu";
 import { Link, useLocation } from "react-router-dom";
@@ -20,8 +20,8 @@ export const ResponsiveSidebar: React.FC<ResponisveSidebarProps> = ({
         to="/"
         className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
       >
-        <Pyramid className="h-4 w-4 transition-all group-hover:scale-110" />
-        <span className="sr-only">Pyramid Manager</span>
+        <ChartBar className="h-4 w-4 transition-all group-hover:scale-110" />
+        <span className="sr-only">Crypto Helper</span>
       </Link>
       {items?.map((item) => {
         return (

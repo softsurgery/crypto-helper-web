@@ -1,10 +1,9 @@
 import axios from "./axios";
-import { SignUpDto } from "@/types/Sign-up.dto";
-import { SignInDto } from "@/types/Sign-in.dto";
+import { SignUpDto } from "@/types/sign-up.dto";
+import { SignInDto } from "@/types/sign-in.dto";
 
 const signUp = async (dto: SignUpDto) => {
   const response = await axios.post("api/auth/sign-up", dto);
-  console.log(response);
   if (response.status === 200)
     localStorage.setItem("authToken", response.data.accessToken);
   return response.data;

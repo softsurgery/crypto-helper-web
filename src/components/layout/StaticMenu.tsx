@@ -1,4 +1,10 @@
-import { ChartNoAxesCombined, LogOut, Network, Settings, Users } from "lucide-react";
+import {
+  ChartNoAxesCombined,
+  Gem,
+  LogOut,
+  Network,
+  Settings,
+} from "lucide-react";
 
 export interface MenuItem {
   id: number;
@@ -10,16 +16,15 @@ export interface MenuItem {
 export const items: MenuItem[] = [
   {
     id: 1,
-    title: "Analytics",
-    href: "/analytics",
-    icon: <ChartNoAxesCombined />,
+    title: "My Coins",
+    href: "/coins",
+    icon: <Gem />,
   },
   {
     id: 2,
-
-    title: "Moderators",
-    href: "/moderators",
-    icon: <Users />,
+    title: "Analytics",
+    href: "/analytics",
+    icon: <ChartNoAxesCombined />,
   },
   {
     id: 3,

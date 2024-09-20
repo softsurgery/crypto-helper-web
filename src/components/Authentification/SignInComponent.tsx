@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import { useAuthForm } from "@/hooks/use-auth-form";
-import { Spinner } from "./common/Spinner";
+import { Spinner } from "../common/Spinner";
 
 export const description =
   "A login page with two columns. The first column has the login form with email and password. There's a Forgot your passwork link and a link to sign up if you do not have an account. The second column has a cover image.";

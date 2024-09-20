@@ -1,5 +1,4 @@
 import React from "react";
-import { Pyramid } from "lucide-react";
 
 import {
   Tooltip,
@@ -10,6 +9,7 @@ import {
 import { cn } from "@/lib/utils";
 import { MenuItem } from "./StaticMenu";
 import { Link, useLocation } from "react-router-dom";
+import { ChartBar } from "lucide-react";
 
 interface SidebarProps {
   className?: string;
@@ -32,8 +32,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, items }) => {
             to="/"
             className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
           >
-            <Pyramid className="h-4 w-4 transition-all group-hover:scale-110" />
-            <span className="sr-only">Pyramid Manager</span>
+            <ChartBar className="h-4 w-4 transition-all group-hover:scale-110" />
+            <span className="sr-only">Crypto Helper</span>
           </Link>
           {items?.map((item) => {
             return (
