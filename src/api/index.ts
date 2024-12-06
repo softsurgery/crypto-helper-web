@@ -7,7 +7,13 @@ export * from "./coin-category";
 import { coinData } from "./coin-data";
 export * from "./coin-data";
 
-import { userData } from "./user";
+import { user } from "./user";
 export * from "./user";
 
-export const api = { auth, coinCategory, coinData, userData };
+import { role } from "./role";
+export * from "./role";
+
+import { permission } from "./permission";
+export * from "./permission";
+
+export const api = { auth, coinCategory, coinData, user, role, permission };

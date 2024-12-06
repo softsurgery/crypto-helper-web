@@ -32,7 +32,7 @@ export const Layout: React.FC<LayoutProps> = ({ className }) => {
         </aside>
         <div className="flex flex-col flex-1 overflow-hidden sm:gap-4 sm:py-4 sm:pl-14">
           <Header items={items} />
-          <main className="flex flex-1 overflow-auto flex-col w-full">
+          <main className="flex flex-1 overflow-auto flex-col w-full px-10">
             <Outlet />
           </main>
         </div>

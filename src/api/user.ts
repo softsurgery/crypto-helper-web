@@ -1,46 +1,58 @@
-
-import { UserData } from "@/types/user.dto";
+import { User } from "@/types/user-management";
 import axios from "./axios";
 
-const fetchUsers = async (): Promise<UserData[]> => {
-  const response = await axios.get<UserData[]>(`api/users`);
+const fetchUsers = async (): Promise<User[]> => {
+  const response = await axios.get<User[]>(`api/users`);
   return response.data;
 };
 
-const fetchUserById = async (userId: number): Promise<UserData> => {
-  const response = await axios.get<UserData>(`api/users/${userId}`);
+const fetchUserById = async (userId: number): Promise<User> => {
+  const response = await axios.get<User>(`api/users/${userId}`);
   return response.data;
 };
 
-const fetchUserByUsername = async (username: string): Promise<UserData> => {
-  const response = await axios.get<UserData>(`api/users/by-username/${username}`);
+const fetchUserByUsername = async (username: string): Promise<User> => {
+  const response = await axios.get<User>(`api/users/by-username/${username}`);
   return response.data;
 };
 
-const createUser = async (userData: Partial<UserData>): Promise<UserData> => {
-  const response = await axios.post<UserData>('api/users', userData);
+const createUser = async (User: Partial<User>): Promise<User> => {
+  const response = await axios.post<User>("api/users", User);
   return response.data;
 };
 
-const updateUser = async (userId: number, userData: Partial<UserData>): Promise<UserData> => {
-  const response = await axios.put<UserData>(`api/users/${userId}`, userData);
+const updateUser = async (
+  userId: number,
+  User: Partial<User>
+): Promise<User> => {
+  const response = await axios.put<User>(`api/users/${userId}`, User);
   return response.data;
 };
 
-const addFavouriteCoin = async (userId: number, coinId: number): Promise<void> => {
+const addFavouriteCoin = async (
+  userId: number,
+  coinId: number
+): Promise<void> => {
   await axios.post(`api/users/${userId}/favourite-coins/${coinId}`);
 };
 
-const removeFavouriteCoin = async (userId: number, coinId: number): Promise<void> => {
+const removeFavouriteCoin = async (
+  userId: number,
+  coinId: number
+): Promise<void> => {
   await axios.delete(`api/users/${userId}/favourite-coins/${coinId}`);
 };
 
-const fetchFavouriteCoins = async (username: string): Promise<UserData["favouriteCoins"]> => {
-  const response = await axios.get<UserData["favouriteCoins"]>(`api/users/${username}/favourite-coins`);
+const fetchFavouriteCoins = async (
+  username: string
+): Promise<User["favouriteCoins"]> => {
+  const response = await axios.get<User["favouriteCoins"]>(
+    `api/users/${username}/favourite-coins`
+  );
   return response.data;
 };
 
-export const userData = {
+export const user = {
   fetchUsers,
   fetchUserById,
   fetchUserByUsername,

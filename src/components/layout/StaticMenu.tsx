@@ -1,10 +1,4 @@
-import {
-  ChartNoAxesCombined,
-  Gem,
-  LogOut,
-  Network,
-  Settings,
-} from "lucide-react";
+import { ChartNoAxesCombined, Gem, Settings, UsersIcon } from "lucide-react";
 
 export interface MenuItem {
   id: number;
@@ -28,20 +22,14 @@ export const items: MenuItem[] = [
   },
   {
     id: 3,
-    title: "Visualizer",
-    href: "/visualizer",
-    icon: <Network />,
+    title: "User Management",
+    href: "/user-management",
+    icon: <UsersIcon />,
   },
   {
     id: 4,
     title: "Settings",
     href: "/settings",
     icon: <Settings />,
-  },
-  {
-    id: 5,
-    title: "Logout",
-    href: "/logout",
-    icon: <LogOut />,
   },
 ];

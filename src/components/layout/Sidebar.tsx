@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { MenuItem } from "./StaticMenu";
 import { Link, useLocation } from "react-router-dom";
 import { ChartBar } from "lucide-react";
+import { ModeToggle } from "../mode-toggle";
 
 interface SidebarProps {
   className?: string;
@@ -23,7 +24,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, items }) => {
     <React.Fragment>
       <nav
         className={cn(
-          "flex flex-col items-center gap-4 px-2 sm:py-5",
+          "flex flex-col items-center gap-4 px-2 sm:py-5 h-full",
           className
         )}
       >
@@ -57,6 +58,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, items }) => {
             );
           })}
         </TooltipProvider>
+        <div className="mt-auto">
+          <ModeToggle />
+        </div>
       </nav>
     </React.Fragment>
   );
