@@ -2,8 +2,8 @@ import { Table } from "@tanstack/react-table";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { usePermissionActions } from "./action-context";
 import { DataTableViewOptions } from "./data-table-view-options";
+import { useRoleActions } from "./action-context";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -13,7 +13,7 @@ export function DataTableToolbar<TData>({
   table,
 }: DataTableToolbarProps<TData>) {
   const { setPage, searchTerm, setSearchTerm } =
-    usePermissionActions();
+    useRoleActions();
   return (
     <div className="flex items-center justify-between gap-2">
       <div className="flex items-center space-x-2">

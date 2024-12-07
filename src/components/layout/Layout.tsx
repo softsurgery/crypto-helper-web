@@ -23,7 +23,7 @@ export const Layout: React.FC<LayoutProps> = ({ className }) => {
     return (
       <div
         className={cn(
-          "flex flex-1 overflow-hidden h-screen w-full flex-col",
+          "flex flex-1 overflow-hidden h-screen w-full flex-col dark:bg-black",
           className
         )}
       >

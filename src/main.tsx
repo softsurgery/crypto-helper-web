@@ -14,6 +14,7 @@ import { UserManagement } from "./pages/UserManagement/UserManagement";
 import Users from "./pages/UserManagement/Users/Users";
 import Roles from "./pages/UserManagement/Roles/Roles";
 import Permissions from "./pages/UserManagement/Permissions/Permissions";
+import { IframeCapCoinPage } from "./components/IframePage";
 
 const router = createBrowserRouter([
   {
@@ -23,12 +24,15 @@ const router = createBrowserRouter([
       { path: "/analytics", element: <Coins /> },
       { path: "/coins", element: <CoinTable /> },
       {
+        path: "/data/:coin", element: <IframeCapCoinPage />
+      },
+      {
         path: "/user-management",
         element: <UserManagement />,
         children: [
           { path: "", element: <Navigate to="users" replace /> },
           { path: "users", element: <Users /> },
-          { path: "roles", element: <Roles />},
+          { path: "roles", element: <Roles /> },
           { path: "permissions", element: <Permissions /> },
           {
             path: "*",

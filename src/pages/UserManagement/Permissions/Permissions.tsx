@@ -34,7 +34,7 @@ export default function Permissions() {
   const {
     data: permissionsResponse,
     isPending: isPermissionsPending,
-    refetch: refetchPermissions,
+    // refetch: refetchPermissions,
   } = useQuery({
     queryKey: [
       "permissions",
@@ -55,7 +55,6 @@ export default function Permissions() {
   });
 
   const permissions = React.useMemo(() => {
-    console.log("Permission", permissionsResponse);
     if (!permissionsResponse) return [];
     return permissionsResponse.content;
   }, [permissionsResponse]);
@@ -65,7 +64,7 @@ export default function Permissions() {
     searchTerm,
     setSearchTerm,
     page,
-    totalPageCount: permissionsResponse?.totalPages,
+    totalPageCount: permissionsResponse?.totalPages || 0,
     setPage,
     size,
     setSize,

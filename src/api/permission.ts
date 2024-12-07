@@ -24,6 +24,11 @@ const findPaginated = async (
   return response.data;
 };
 
+const findAll = async (): Promise<Permission[]> => {
+  const response = await axios.get<Permission[]>(`api/permissions`);
+  return response.data;
+};
+
 const findById = async (permissionId: number): Promise<Permission> => {
   const response = await axios.get<Permission>(
     `api/permissions/${permissionId}`
@@ -68,11 +73,11 @@ const removePermissionFromRole = async (
 export const permission = {
   // Permissions
   findPaginated,
+  findAll,
   findById,
   create,
   update,
   remove,
-
   // Role-Permission associations
   assignPermissionToRole,
   removePermissionFromRole,

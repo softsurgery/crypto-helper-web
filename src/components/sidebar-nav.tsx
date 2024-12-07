@@ -34,7 +34,7 @@ export default function SidebarNav({
 
   return (
     <>
-      <div className="md:hidden">
+      <div className="md:hidden ">
         <Select value={val} onValueChange={handleSelect}>
           <SelectTrigger className="h-12 sm:w-48">
             <SelectValue placeholder="Theme" />
@@ -52,7 +52,7 @@ export default function SidebarNav({
         </Select>
       </div>
 
-      <div className="hidden w-full overflow-x-auto bg-background py-2 md:block">
+      <div className="hidden w-full overflow-x-auto bg-background py-2 md:block dark:bg-black">
         <nav
           className={cn(
             "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
