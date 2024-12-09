@@ -11,7 +11,8 @@ import { formatValue } from "@/lib/numbers";
 import { cn } from "@/lib/utils";
 import { CoinData } from "@/types/coin-data.response";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, ArrowUp, Star } from "lucide-react";
+import { ArrowDown, ArrowUp, Eye, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface DataTableProps {
   className?: string;
@@ -19,10 +20,8 @@ interface DataTableProps {
   isPending: boolean;
 }
 
-export default function DataTable({
-  className,
-  data
-}: DataTableProps) {
+export default function DataTable({ className, data }: DataTableProps) {
+  const navigate = useNavigate();
   return (
     <Table className={cn(className)}>
       <TableHeader>
@@ -38,13 +37,12 @@ export default function DataTable({
           <TableHead>Market Cap %</TableHead>
           <TableHead className="hidden md:table-cell">Volume (24h)</TableHead>
           <TableHead>Circulating Supply</TableHead>
-          <TableHead className="text-center">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {data.map((coin: CoinData) => {
           return (
-            <TableRow>
+            <TableRow key={coin.code}>
               <TableCell className="hidden sm:table-cell">
                 <img
                   alt="Product img"
@@ -115,9 +113,16 @@ export default function DataTable({
                 ${formatValue(coin.circulatingSupply)}
               </TableCell>
 
-              <TableCell>
+              <TableCell className="flex flex-row gap-4">
                 <Button className="flex gap-2 items-center" variant={"default"}>
                   Add to Favourite <Star className="h-4 w-4" />
+                </Button>
+                <Button
+                  className="flex gap-2 items-center"
+                  variant={"default"}
+                  onClick={() => navigate(`/data/${coin.hrefName}`)}
+                >
+                  Go to KPIs <Eye className="h-4 w-4" />
                 </Button>
               </TableCell>
             </TableRow>

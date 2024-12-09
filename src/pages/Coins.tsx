@@ -12,20 +12,28 @@ import { api } from "@/api";
 import DataTable from "@/components/Analytics/DataTable";
 import { HashLoader } from "react-spinners";
 import { Label } from "@/components/ui/label";
-import CategoryGrid from "@/components/Analytics/CategoryGrid";
 import { Option } from "@/components/ui/auto-complete";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/components/theme-provider";
+import { useBreadcrumb } from "@/context/BreadcrumbContext";
 
 interface CoinsProps {
   className?: string;
 }
 
 export default function Coins({ className }: CoinsProps) {
+
+  const { setRoutes } = useBreadcrumb();
+  React.useEffect(() => {
+    setRoutes([{ title: "Cryptocurrencies Analytics" }]);
+  }, []);
+
   const [source, setSource] = React.useState({ value: "" } as Option);
   const [serverPage, setServerPage] = React.useState(1);
   const [appPage, setAppPage] = React.useState(0);
   const [allData, setAllData] = React.useState([]);
   const [hasMore, setHasMore] = React.useState(true);
+  const { theme } = useTheme();
 
   const observerRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -45,7 +53,6 @@ export default function Coins({ className }: CoinsProps) {
   } = useQuery({
     queryKey: ["coins", serverPage, source.value],
     queryFn: () => api.coinData.fetch(source.value, serverPage),
-    refetchInterval: 5000,
     enabled: hasMore,
   });
 
@@ -139,12 +146,6 @@ export default function Coins({ className }: CoinsProps) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <CategoryGrid
-            className="py-5"
-            categories={categories}
-            value={source}
-            onChange={(value: Option) => setSource(value)} // Reset data on source change
-          />
           <DataTable
             data={allData.slice(0, (appPage + 1) * 5)}
             isPending={isFetchCoinsPending}
@@ -154,7 +155,11 @@ export default function Coins({ className }: CoinsProps) {
         <CardFooter className="flex justify-center">
           {isFetchCoinsPending && (
             <div className="flex flex-col justify-center items-center gap-2">
-              <HashLoader className="my-2" />
+              <HashLoader
+                className="my-10"
+                size={allData.length == 0 ? 500 : 50}
+                color={theme == "dark" ? "white" : "black"}
+              />
               <Label className="text-md font-semibold text-slate-500">
                 Please wait for data to load...
               </Label>

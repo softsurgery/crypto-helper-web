@@ -3,14 +3,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { PanelLeft, User } from "lucide-react";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -22,6 +14,8 @@ import { cn } from "@/lib/utils";
 import { ResponsiveSidebar } from "./ResponsiveSidebar";
 import { MenuItem } from "./StaticMenu";
 import { useNavigate } from "react-router-dom";
+import { BreadcrumbCommon } from "../common/Breadcrumb";
+import { useBreadcrumb } from "@/context/BreadcrumbContext";
 
 interface HeaderProps {
   className?: string;
@@ -29,6 +23,7 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ className, items }) => {
+  const { routes } = useBreadcrumb();
   const navigate = useNavigate();
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -43,25 +38,8 @@ export const Header: React.FC<HeaderProps> = ({ className, items }) => {
           <ResponsiveSidebar items={items} />
         </SheetContent>
       </Sheet>
-      <Breadcrumb className="hidden md:flex">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <a href="#">Dashboard</a>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <a href="#">Orders</a>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Recent Orders</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+     {/* Breadcrumb */}
+     <BreadcrumbCommon hierarchy={routes} />
       <div className="relative ml-auto flex-1 md:grow-0">
         
       </div>
